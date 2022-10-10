@@ -4,8 +4,19 @@
   become: true
   tasks: 
   
-  - name: install apache on all host
+  - name: remove apache on all CentOS host
     yum:
-      name: httpd
+      name: 
+         - httpd
+         - php
       state: absent
+      update_cache: yes
+    when: ansible_distribution == "CentOS"
 
+  - name: remove php on all host
+    apt:
+      name: 
+         - apache2
+         - libapache-mod-php
+      state: absent
+    when: ansible_distribution == "Ubuntu"
