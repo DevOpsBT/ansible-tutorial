@@ -1,0 +1,51 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+  
+  - name: install updates (CentOS)
+    yum:
+       update_only: yes
+       update_cache: yes
+    when: ansible_distribution == "CentOS"
+
+  - name: install updates (Ubuntu)
+    apt:
+       update_only: yes
+       update_cache: yes
+    when: ansible_distribution == "Ubuntu"
+
+- hosts: web_server
+  become: true
+  tasks:
+
+  - name: install apache and php on centos server
+    yum:
+      name:
+        - httpd
+        - php
+      state: latest
+    when: ansible_distribution == "CentOS"
+
+- hosts: db_server
+  become: true
+  tasks:
+
+  - name: install sql server on CentOS server 
+    yum:
+      name: mariadb-server
+      state: latest
+    when: ansible_distribution == "CentOS"
+
+- hosts: file_server
+  become: true
+  tasks:
+
+  - name: Install file server on CentOS server
+    yum:
+      name: samba
+      state: latest
+    when: ansible_distribution == "CentOS"
+
+
