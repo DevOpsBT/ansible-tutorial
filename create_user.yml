@@ -9,7 +9,7 @@
       name: simone
       groups: root
 
-  - name: add ssh key for simone
+  - name: add ssh key for user simone
     tags: always
     authorized_key:
       user: simone
