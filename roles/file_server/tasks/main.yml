@@ -1,0 +1,5 @@
+- name: Install file server samba on (CentOS)
+  yum: 
+    name: samba
+    state: latest
+  when: ansible_distribution == "CentOS"

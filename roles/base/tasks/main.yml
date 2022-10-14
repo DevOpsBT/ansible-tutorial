@@ -1,0 +1,4 @@
+- name: copy autorized key for simone
+  authorized_key:
+    user: simone
+    key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA2FgY+UXqfS3FtzzPk2tI0p+blTtbVS91V340SxjDQA Ansible default 

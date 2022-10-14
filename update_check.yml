@@ -1,0 +1,11 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+  - name: check for latest updates
+    yum:
+      update_only: yes
+      update_cache: true
+     
+  
